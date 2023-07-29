@@ -16,8 +16,21 @@ public class Workout {
     private String notes;
     private boolean checkmark;
 
+    //private Block block
+
 
     public Workout() {
+    }
+
+
+    public Workout(String name, String day, int sets, int reps, String weight, String notes, boolean checkmark) {
+        this.name = name;
+        this.day = day;
+        this.sets = sets;
+        this.reps = reps;
+        this.weight = weight;
+        this.notes = notes;
+        this.checkmark = checkmark;
     }
 
     public Workout(Long id, String name, String day, int sets, int reps, String weight, String notes, boolean checkmark) {

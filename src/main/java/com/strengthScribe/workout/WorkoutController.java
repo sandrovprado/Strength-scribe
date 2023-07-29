@@ -1,10 +1,7 @@
 package com.strengthScribe.workout;
 
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,4 +24,15 @@ public class WorkoutController {
     public Workout getWorkout(@PathVariable("workoutId") Long workoutId){
         return workoutService.getWorkout(workoutId);
     }
+
+    @PostMapping()
+    public void addWorkout(@RequestBody WorkoutAddRequest workoutRequest){
+        workoutService.addWorkout(workoutRequest);
+    }
+
+    @DeleteMapping("{workoutId}")
+    public void deleteWorkoutById(@PathVariable("workoutId") Long workoutId){
+        workoutService.deleteWorkoutById(workoutId);
+    }
+
 }

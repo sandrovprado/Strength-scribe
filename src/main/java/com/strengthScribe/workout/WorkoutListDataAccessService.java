@@ -35,8 +35,14 @@ public class WorkoutListDataAccessService implements WorkoutDao {
     }
 
     @Override
-    public void insertWorkout(Workout workout) {
+    public void createWorkout(Workout workout) {
         workoutList.add(workout);
+    }
+
+    @Override
+    public boolean existWorkoutWithId(Long id) {
+        return workoutList.stream()
+                .anyMatch(workout -> workout.getId().equals(id));
     }
 
     @Override
@@ -51,4 +57,6 @@ public class WorkoutListDataAccessService implements WorkoutDao {
     public void updateWorkoutById(Workout update) {
         workoutList.add(update);
     }
+
+
 }

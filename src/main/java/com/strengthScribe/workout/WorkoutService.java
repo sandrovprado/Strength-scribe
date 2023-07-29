@@ -1,6 +1,5 @@
 package com.strengthScribe.workout;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,6 +21,27 @@ public class WorkoutService {
         return workoutDao.selectWorkoutById(id)
                 .orElseThrow(
                         () -> new RuntimeException("Workout not found"));
+    }
+
+    public void addWorkout(WorkoutAddRequest workoutRequest){
+        Workout workout = new Workout(
+                workoutRequest.name(),
+                workoutRequest.day(),
+                workoutRequest.sets(),
+                workoutRequest.reps(),
+                workoutRequest.weight(),
+                workoutRequest.notes(),
+                workoutRequest.checkmark()
+        );
+        workoutDao.createWorkout(workout);
+
+    }
+
+    public void deleteWorkoutById(Long workoutId){
+        if(!workoutDao.existWorkoutWithId(workoutId)){
+            throw new RuntimeException("Workout not found");
+        }
+        workoutDao.deleteWorkoutById(workoutId);
     }
 
 }

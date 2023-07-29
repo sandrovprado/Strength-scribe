@@ -7,7 +7,8 @@ public interface WorkoutDao {
 
     List<Workout> selectAllWorkouts();
     Optional<Workout> selectWorkoutById(Long id);
-    void insertWorkout(Workout workout);
+    void createWorkout(Workout workout);
     void deleteWorkoutById(Long id);
     void updateWorkoutById(Workout update);
+    boolean existWorkoutWithId(Long id);
 }
