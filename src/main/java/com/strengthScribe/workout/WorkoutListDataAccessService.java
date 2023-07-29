@@ -14,9 +14,9 @@ public class WorkoutListDataAccessService implements WorkoutDao {
 
     static {
         workoutList = new ArrayList<>();
-        Workout squat = new Workout(1L,"Squat","Day 1",3,5,"RPE 6","Focus on form",false);
-        Workout bench = new Workout(2L,"Bench","Day 3",5,4,"RPE 6","dont sink",false);
-        Workout deadlift = new Workout(3L,"Deadlift","Day 1",3,3,"RPE 6","press the floor",false);
+        Workout squat = new Workout(1L,"Squat","Day 1",3,5,"RPE 6","Focus on form");
+        Workout bench = new Workout(2L,"Bench","Day 3",5,4,"RPE 6","dont sink");
+        Workout deadlift = new Workout(3L,"Deadlift","Day 1",3,3,"RPE 6","press the floor");
         workoutList.add(squat);
         workoutList.add(bench);
         workoutList.add(deadlift);
@@ -54,7 +54,7 @@ public class WorkoutListDataAccessService implements WorkoutDao {
     }
 
     @Override
-    public void updateWorkoutById(Workout update) {
+    public void updateWorkout(Workout update) {
         workoutList.add(update);
     }
 

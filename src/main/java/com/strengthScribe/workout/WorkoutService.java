@@ -30,8 +30,7 @@ public class WorkoutService {
                 workoutRequest.sets(),
                 workoutRequest.reps(),
                 workoutRequest.weight(),
-                workoutRequest.notes(),
-                workoutRequest.checkmark()
+                workoutRequest.notes()
         );
         workoutDao.createWorkout(workout);
 
@@ -42,6 +41,46 @@ public class WorkoutService {
             throw new RuntimeException("Workout not found");
         }
         workoutDao.deleteWorkoutById(workoutId);
+    }
+
+    public void updateWorkout(Long workoutId, WorkoutUpdateRequest workoutUpdateRequest){
+        Workout workout = getWorkout(workoutId);
+
+        boolean changes = false;
+
+        if(workoutUpdateRequest.name()!=null&& !workoutUpdateRequest.name().equals(workout.getName())){
+            workout.setName(workoutUpdateRequest.name());
+            changes = true;
+        }
+
+        if(workoutUpdateRequest.day()!=null&& !workoutUpdateRequest.day().equals(workout.getDay())){
+            workout.setDay(workoutUpdateRequest.day());
+            changes = true;
+        }
+
+        if(workoutUpdateRequest.sets()!=null&& !workoutUpdateRequest.sets().equals(workout.getSets())){
+            workout.setSets(workoutUpdateRequest.sets());
+            changes = true;
+        }
+
+        if(workoutUpdateRequest.reps()!=null&& !workoutUpdateRequest.reps().equals(workout.getReps())){
+            workout.setReps(workoutUpdateRequest.reps());
+            changes = true;
+        }
+
+        if(workoutUpdateRequest.weight()!=null&& !workoutUpdateRequest.weight().equals(workout.getWeight())){
+            workout.setWeight(workoutUpdateRequest.weight());
+            changes = true;
+        }
+
+        if(workoutUpdateRequest.notes()!=null&& !workoutUpdateRequest.notes().equals(workout.getNotes())){
+            workout.setNotes(workoutUpdateRequest.notes());
+            changes = true;
+        }
+
+        if(!changes){
+            workoutDao.updateWorkout(workout);
+        }
     }
 
 }

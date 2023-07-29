@@ -9,6 +9,6 @@ public interface WorkoutDao {
     Optional<Workout> selectWorkoutById(Long id);
     void createWorkout(Workout workout);
     void deleteWorkoutById(Long id);
-    void updateWorkoutById(Workout update);
+    void updateWorkout(Workout update);
     boolean existWorkoutWithId(Long id);
 }

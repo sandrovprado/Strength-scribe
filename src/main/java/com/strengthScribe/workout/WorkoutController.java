@@ -35,4 +35,10 @@ public class WorkoutController {
         workoutService.deleteWorkoutById(workoutId);
     }
 
+    @PutMapping("{workoutId}")
+    public void updateCustomer(@PathVariable("workoutId") Long workoutId,@RequestBody WorkoutUpdateRequest workoutUpdateRequest){
+        workoutService.updateWorkout(workoutId,workoutUpdateRequest);
+
+    }
+
 }
